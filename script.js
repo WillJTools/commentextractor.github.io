@@ -35,7 +35,7 @@ function extractComments(scriptText, fileExtension) {
   } else if (fileExtension === 'go') {
     return scriptText.match(/\/\/.*|\/\*[^]*?\*\//g) || [];
   }
-  // Add more cases for other scripting languages as needed.
+  
   return [];
 }
 

@@ -9,9 +9,22 @@ h1 {
   margin-bottom: 20px;
 }
 
+.upload-button {
+  display: inline-block;
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.upload-button:hover {
+  background-color: #2980b9;
+}
+
 input[type="file"] {
-  display: block;
-  margin: 20px auto;
+  display: none;
 }
 
 pre {

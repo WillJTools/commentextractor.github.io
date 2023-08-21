@@ -24,6 +24,16 @@ function extractComments(scriptText, fileExtension) {
     return scriptText.match(/\/\/.*|\/\*[^]*?\*\//g) || [];
   } else if (fileExtension === 'py') {
     return scriptText.match(/#.*$/gm) || [];
+  } else if (fileExtension === 'java') {
+    return scriptText.match(/\/\/.*|\/\*[^]*?\*\//g) || [];
+  } else if (fileExtension === 'bash') {
+    return scriptText.match(/#.*$/gm) || [];
+  } else if (fileExtension === 'rb') {
+    return scriptText.match(/#.*$/gm) || [];
+  } else if (fileExtension === 'cpp') {
+    return scriptText.match(/\/\/.*|\/\*[^]*?\*\//g) || [];
+  } else if (fileExtension === 'go') {
+    return scriptText.match(/\/\/.*|\/\*[^]*?\*\//g) || [];
   }
   // Add more cases for other scripting languages as needed.
   return [];

@@ -8,7 +8,9 @@
 </head>
 <body>
   <h1>Script Comment Extractor</h1>
-  <label class="upload-button" for="scriptFile">Choose File</label>
+  <label class="upload-button" for="scriptFile">Browse</label>
+  <span id="fileName">No file chosen</span>
+  <label class="upload-button" id="uploadButton">Upload</label>
   <input type="file" id="scriptFile" accept=".js, .py, .java, .bash, .rb, .cpp, .go" style="display: none;">
   <pre id="commentsOutput"></pre>
 

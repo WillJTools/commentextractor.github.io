@@ -6,7 +6,8 @@ document.getElementById('scriptFile').addEventListener('change', function(event)
 
     reader.onload = function(e) {
       const scriptText = e.target.result;
-      const comments = extractComments(scriptText);
+      const fileExtension = getFileExtension(file.name);
+      const comments = extractComments(scriptText, fileExtension);
       displayComments(comments);
     };
 
@@ -14,12 +15,18 @@ document.getElementById('scriptFile').addEventListener('change', function(event)
   }
 });
 
-function extractComments(scriptText) {
-  // Implement your comment extraction logic here.
-  // This can vary based on different script formats.
-  // For example, you can use regular expressions to capture comments.
-  // Adjust this function according to the script formats you want to support.
-  return ['Comment 1', 'Comment 2', '...'];
+function getFileExtension(filename) {
+  return filename.split('.').pop().toLowerCase();
+}
+
+function extractComments(scriptText, fileExtension) {
+  if (fileExtension === 'js') {
+    return scriptText.match(/\/\/.*|\/\*[^]*?\*\//g) || [];
+  } else if (fileExtension === 'py') {
+    return scriptText.match(/#.*$/gm) || [];
+  }
+  // Add more cases for other scripting languages as needed.
+  return [];
 }
 
 function displayComments(comments) {

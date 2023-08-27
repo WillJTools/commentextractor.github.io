@@ -8,7 +8,7 @@ document.getElementById('scriptFile').addEventListener('change', function(event)
       const scriptText = e.target.result;
       const fileExtension = getFileExtension(file.name);
       const comments = extractComments(scriptText, fileExtension);
-      displayComments(comments);
+      displayComments(comments, file.name); // Pass the file name
     };
 
     reader.readAsText(file);
@@ -39,7 +39,15 @@ function extractComments(scriptText, fileExtension) {
   return [];
 }
 
-function displayComments(comments) {
+function displayComments(comments, fileName) {
   const commentsOutput = document.getElementById('commentsOutput');
+  const fileNameElement = document.getElementById('fileName'); // Get the element
   commentsOutput.textContent = comments.join('\n\n');
+  
+  if (fileName) {
+    fileNameElement.textContent = `Uploaded File: ${fileName}`; // Set the file name
+  } else {
+    fileNameElement.textContent = ''; // Clear the content if no file is uploaded
+  }
 }
+

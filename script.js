@@ -45,9 +45,9 @@ function displayComments(comments, fileName) {
   commentsOutput.textContent = comments.join('\n\n');
   
   if (fileName) {
-    fileNameElement.textContent = `Uploaded File: ${fileName}`; // Set the file name
+    fileNameElement.textContent = `Uploaded File: ${fileName}`; 
   } else {
-    fileNameElement.textContent = ''; // Clear the content if no file is uploaded
+    fileNameElement.textContent = ''; 
   }
 }
 

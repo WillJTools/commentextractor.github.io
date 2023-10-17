@@ -35,19 +35,18 @@ function extractComments(scriptText, fileExtension) {
   } else if (fileExtension === 'go') {
     return scriptText.match(/\/\/.*|\/\*[^]*?\*\//g) || [];
   }
-  
+
   return [];
 }
 
 function displayComments(comments, fileName) {
   const commentsOutput = document.getElementById('commentsOutput');
-  const fileNameElement = document.getElementById('fileName'); // Get the element
+  const fileNameElement = document.getElementById('fileName');
   commentsOutput.textContent = comments.join('\n\n');
   
   if (fileName) {
-    fileNameElement.textContent = `Uploaded File: ${fileName}`; 
+    fileNameElement.textContent = `Uploaded File: ${fileName}`;
   } else {
-    fileNameElement.textContent = ''; 
+    fileNameElement.textContent = '';
   }
 }
-

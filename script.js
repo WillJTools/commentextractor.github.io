@@ -20,20 +20,14 @@ function getFileExtension(filename) {
 }
 
 function extractComments(scriptText, fileExtension) {
-  if (fileExtension === 'js') {
+  if (fileExtension === 'js' || fileExtension === 'java' || fileExtension === 'cpp' || fileExtension === 'go') {
     return scriptText.match(/\/\/.*|\/\*[^]*?\*\//g) || [];
   } else if (fileExtension === 'py') {
     return scriptText.match(/#.*$/gm) || [];
-  } else if (fileExtension === 'java') {
-    return scriptText.match(/\/\/.*|\/\*[^]*?\*\//g) || [];
   } else if (fileExtension === 'bash') {
-    return scriptText.match(/#.*$/gm) || [];
+    return scriptText.match(/#.*$/g) || [];
   } else if (fileExtension === 'rb') {
     return scriptText.match(/#.*$/gm) || [];
-  } else if (fileExtension === 'cpp') {
-    return scriptText.match(/\/\/.*|\/\*[^]*?\*\//g) || [];
-  } else if (fileExtension === 'go') {
-    return scriptText.match(/\/\/.*|\/\*[^]*?\*\//g) || [];
   }
 
   return [];

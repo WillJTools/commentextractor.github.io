@@ -10,9 +10,19 @@ document.getElementById('scriptFile').addEventListener('change', function(event)
 
     reader.onload = function(e) {
       const scriptText = e.target.result;
-      commentsOutputElement.textContent = scriptText;
+      const comments = extractComments(scriptText);
+      displayComments(comments, commentsOutputElement);
     };
 
     reader.readAsText(file);
   }
 });
+
+function extractComments(scriptText) {
+  return scriptText.match(/\/\/.*|\/\*[^]*?\*\//g) || [];
+}
+
+function displayComments(comments, outputElement) {
+  const formattedComments = comments.map(comment => `// ${comment.trim()}`).join('\n');
+  outputElement.textContent = formattedComments;
+}

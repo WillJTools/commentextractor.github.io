@@ -1,5 +1,9 @@
 document.getElementById('scriptFile').addEventListener('change', function(event) {
   const file = event.target.files[0];
+  const fileNameElement = document.getElementById('fileName');
+  const commentsOutputElement = document.getElementById('commentsOutput');
+
+  fileNameElement.textContent = `Uploaded file: ${file.name}`;
 
   if (file) {
     const reader = new FileReader();
@@ -8,7 +12,7 @@ document.getElementById('scriptFile').addEventListener('change', function(event)
       const scriptText = e.target.result;
       const fileExtension = getFileExtension(file.name);
       const comments = extractComments(scriptText, fileExtension);
-      displayComments(comments);
+      displayComments(comments, commentsOutputElement);
     };
 
     reader.readAsText(file);
@@ -27,13 +31,4 @@ function extractComments(scriptText, fileExtension) {
   } else if (fileExtension === 'js') {
     return scriptText.match(/\/\/.*|\/\*[^]*?\*\//g) || [];
   } else if (fileExtension === 'php') {
-    return scriptText.match(/<\?php.*?\?>|\/\/.*|\/\*[^]*?\*\//g) || [];
-  }
-
-  return [];
-}
-
-function displayComments(comments) {
-  const commentsOutput = document.getElementById('commentsOutput');
-  commentsOutput.textContent = comments.join('\n\n');
-}
+    return scriptText

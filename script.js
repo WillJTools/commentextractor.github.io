@@ -26,6 +26,8 @@ function extractComments(scriptText, fileExtension) {
     return scriptText.match(/#.*$/gm) || [];
   } else if (fileExtension === 'js') {
     return scriptText.match(/\/\/.*|\/\*[^]*?\*\//g) || [];
+  } else if (fileExtension === 'php') {
+    return scriptText.match(/<\?php.*?\?>|\/\/.*|\/\*[^]*?\*\//g) || [];
   }
 
   return [];
